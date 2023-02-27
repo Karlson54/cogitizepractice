@@ -26,6 +26,7 @@ router.get("/list", async (req, res, next) => {
 router.get("/:id", async (req, res, next) => {
     try {
         const movieId = req.params["id"];
+        const movie = await Movie.findOne({ id: movieId });
         res.json(movie);
     } catch (error) {
         next(error);
